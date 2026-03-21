@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusReserve</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+
+<!-- CABEÇALHO -->
+<div class="header">
+    <h1>CampusReserve</h1>
+    <p class="subtitle">Agendamento de espaços e laboratórios</p>
+</div>
+
+<!-- FORMULÁRIO -->
+<div class="card">
+    <form id="formularioReserva">
+
+        <div class="form-section">
+            <h3>Tipo de Espaço</h3>
+            <select id="tipo_sala" required>
+                <option value="">Selecione um tipo</option>
+                {% for sala in rooms %}
+                    <option value="{{ sala }}">{{ sala }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-section">
+            <h3>Equipamentos</h3>
+            <div class="checkbox-group">
+                {% for eq in equipments %}
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipamentos" value="{{ eq }}">
+                        {{ eq }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Acessibilidade</h3>
+            <label class="checkbox-item">
+                <input type="checkbox" id="acessibilidade">
+                Necessita acesso para cadeira de rodas
+            </label>
+        </div>
+
+        <button type="submit" class="primary-btn">
+            Criar Reserva
+        </button>
+
+    </form>
+</div>
+
+<!-- RESULTADO -->
+<div class="card result-card">
+
+    <div class="result-header">
+        <h3>Card de Reserva</h3>
+    </div>
+
+    <div id="resultado">Aguardando criação de reserva</div>
+
+    <div class="reserva-formatada" id="reservaFormatada" style="display:none;">
+        <h4>Resumo da Reserva</h4>
+        <p><strong>Tipo de Sala:</strong> <span id="viewTipo"></span></p>
+        <p><strong>Equipamentos:</strong></p>
+        <ul id="viewEquipamentos"></ul>
+        <p><strong>Acessibilidade:</strong> <span id="viewAcessibilidade"></span></p>
+
+    </div>
+
+    <button class="secondary-btn" onclick="exportarJSON()">
+        Exportar JSON
+    </button>
+
+</div>
+
+</div>
+
+<!-- JS separado -->
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

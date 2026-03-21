@@ -1,0 +1,184 @@
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* BASE */
+body {
+font-family: "Segoe UI", Roboto, Arial, sans-serif;
+background: linear-gradient(135deg, #e8f5e9, #f4fbf6);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* CONTAINER */
+.container {
+width: 100%;
+max-width: 900px;
+padding: 20px;
+}
+
+/* HEADER */
+.header {
+text-align: center;
+margin-bottom: 25px;
+}
+
+.header h1 {
+color: #1b5e20;
+font-size: 28px;
+margin-bottom: 5px;
+}
+
+.subtitle {
+color: #4caf50;
+font-size: 14px;
+}
+
+/* CARD */
+.card {
+background: #ffffff;
+border-radius: 14px;
+padding: 25px;
+margin-bottom: 20px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* FORM SECTIONS */
+.form-section {
+margin-bottom: 20px;
+}
+
+.form-section h3 {
+font-size: 16px;
+color: #2e7d32;
+margin-bottom: 8px;
+}
+
+/* INPUTS */
+select {
+width: 100%;
+padding: 10px;
+border-radius: 8px;
+border: 1px solid #c8e6c9;
+font-size: 14px;
+transition: border 0.2s;
+}
+
+select:focus {
+outline: none;
+border-color: #4caf50;
+}
+
+/* CHECKBOX */
+.checkbox-group {
+display: grid;
+gap: 6px;
+}
+
+.checkbox-item {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 14px;
+color: #2e7d32;
+cursor: pointer;
+}
+
+/* BOTÕES */
+.primary-btn {
+width: 100%;
+background: #2e7d32;
+color: white;
+border: none;
+padding: 12px;
+border-radius: 10px;
+font-size: 15px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.25s ease;
+}
+
+.primary-btn:hover {
+background: #1b5e20;
+transform: translateY(-1px);
+}
+
+.secondary-btn {
+width: 100%;
+margin-top: 10px;
+background: #66bb6a;
+color: white;
+border: none;
+padding: 11px;
+border-radius: 10px;
+font-size: 14px;
+cursor: pointer;
+transition: 0.25s;
+}
+
+.secondary-btn:hover {
+background: #43a047;
+}
+
+/* RESULT */
+.result-header {
+margin-bottom: 10px;
+}
+
+.result-header h3 {
+color: #2e7d32;
+}
+
+/* JSON DISPLAY */
+pre {
+background: #0f172a;
+color: #e2e8f0;
+padding: 18px;
+border-radius: 10px;
+font-size: 13px;
+overflow-x: auto;
+border: 1px solid #1e293b;
+line-height: 1.5;
+}
+
+/* RESPONSIVO */
+@media (min-width: 768px) {
+.container {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
+align-items: start;
+}
+
+.header {
+    grid-column: span 2;
+}
+
+}
+
+.reserva-formatada {
+    background: #f1f8f4;
+    border: 1px solid #c8e6c9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.reserva-formatada h4 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+}
+
+.reserva-formatada p {
+    margin: 5px 0;
+}
+
+.reserva-formatada ul {
+    margin-left: 15px;
+}
