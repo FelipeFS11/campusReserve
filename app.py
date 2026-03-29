@@ -3,9 +3,7 @@ import json
 
 app = Flask(__name__)
 
-# =========================
 # ENTIDADE
-# =========================
 class Reserva:
     def __init__(self):
         self.tipo_sala = None
@@ -19,9 +17,7 @@ class Reserva:
             "acessibilidade": self.acessibilidade
         }
 
-# =========================
 # INTERFACES (ISP)
-# =========================
 class IRequisitosEquipamento:
     def adicionar_equipamento(self, equipamento: str):
         pass
@@ -34,14 +30,13 @@ class IRequisitosEspaco:
     def definir_tipo_sala(self, tipo_sala: str):
         pass
 
-# =========================
 # BUILDER
-# =========================
 class ConstrutorReserva(
     IRequisitosEquipamento,
     IRequisitosAcessibilidade,
     IRequisitosEspaco
-):
+    ):
+
     def __init__(self):
         self.reserva = Reserva()
 
@@ -58,18 +53,16 @@ class ConstrutorReserva(
         return self
 
     def construir(self):
-        # ✅ Guard Clause
+        # Guard Clause
         if not self.reserva.tipo_sala:
             raise ValueError("O tipo de sala é obrigatório")
 
         return self.reserva
 
-# =========================
 # SERVICE (CAMADA DE APLICAÇÃO)
-# =========================
 class ServicoReserva:
     def criar_reserva(self, dados):
-        # ✅ Guard Clause
+        # Guard Clause
         if "tipo_sala" not in dados:
             raise ValueError("tipo_sala é obrigatório")
 
@@ -85,18 +78,14 @@ class ServicoReserva:
         )
 
         return construtor.construir()
-
+    
 servico = ServicoReserva()
 
-# =========================
 # DADOS ESTÁTICOS (RNF)
-# =========================
 SALAS = ["Sala de Estudo", "Laboratório", "Auditório"]
 EQUIPAMENTOS = ["Projetor", "GPU", "Computadores", "Quadro Branco"]
 
-# =========================
 # ROTAS
-# =========================
 @app.route("/")
 def inicio():
     return render_template(
@@ -115,9 +104,7 @@ def criar_reserva():
     except ValueError as erro:
         return jsonify({"erro": str(erro)}), 400
 
-# =========================
 # EXPORTAÇÃO JSON
-# =========================
 @app.route("/exportar", methods=["POST"])
 def exportar():
     dados = request.json
@@ -125,8 +112,5 @@ def exportar():
         "Content-Type": "application/json"
     }
 
-# =========================
-# EXECUÇÃO
-# =========================
 if __name__ == "__main__":
     app.run(debug=True)
