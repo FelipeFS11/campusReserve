@@ -56,7 +56,7 @@ class ConstrutorReserva(
         # Guard Clause
         if not self.reserva.tipo_sala:
             raise ValueError("O tipo de sala é obrigatório")
-
+        
         return self.reserva
 
 # SERVICE (CAMADA DE APLICAÇÃO)
